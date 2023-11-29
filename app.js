@@ -48,6 +48,26 @@ app.post("/api/v1/contact01", async (req, res) => {
   }
 });
 
+app.post("/api/v1/contact02", async (req, res) => {
+  try {
+    const { email, message } = req.body;
+
+    const createdContact = await prisma.contact.create({
+      data: {
+        email,
+        message,
+      },
+    });
+
+    console.log("お問い合わせ➁が保存されました:", createdContact);
+
+    res.status(201).json({ message: "お問い合わせが送信されました。" });
+  } catch (error) {
+    console.error("エラー:", error);
+    res.status(500).json({ error: "サーバーエラーが発生しました。" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

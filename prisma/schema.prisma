@@ -14,3 +14,9 @@ model Contact {
   email    String
   message  String
 }
+
+model Contact2 {
+  id       Int      @id @default(autoincrement())
+  email    String
+  message  String
+}
