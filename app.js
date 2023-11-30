@@ -28,6 +28,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/api/v1/list", async (req, res, next) => {
+  const prisma = new PrismaClient();
+  const allProduction = await prisma.list.findMany();
+  res.json(allProduction);
+});
+
 app.post("/api/v1/contact01", async (req, res) => {
   try {
     const { email, message } = req.body;
