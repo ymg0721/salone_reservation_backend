@@ -34,7 +34,13 @@ app.get("/api/v1/list", async (req, res, next) => {
   res.json(allProduction);
 });
 
-app.post("/api/v1/contact01", async (req, res) => {
+app.get("/api/v1/calender", async (req, res, next) => {
+  const prisma = new PrismaClient();
+  const allProduction = await prisma.calender.findMany();
+  res.json(allProduction);
+});
+
+app.post("/api/v1/conta ct01", async (req, res) => {
   try {
     const { email, message } = req.body;
 

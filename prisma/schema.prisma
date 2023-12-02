@@ -26,4 +26,13 @@ model List {
   src    String
   title  String
   date   String
+  text   String
+}
+
+model Calender {
+  id       Int      @id @default(autoincrement())
+  src    String
+  title  String
+  date   String
+  detail   String
 }
