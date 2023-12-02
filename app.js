@@ -40,7 +40,28 @@ app.get("/api/v1/calender", async (req, res, next) => {
   res.json(allProduction);
 });
 
-app.post("/api/v1/conta ct01", async (req, res) => {
+app.post("/api/v1/reservation02", async (req, res) => {
+  try {
+    const { name, email, phone } = req.body;
+
+    const createdContact = await prisma.reservation02.create({
+      data: {
+        name,
+        email,
+        phone,
+      },
+    });
+
+    console.log("お問い合わせが保存されました:", createdContact);
+
+    res.status(201).json({ name: "お問い合わせが送信されました。" });
+  } catch (error) {
+    console.error("エラー:", error);
+    res.status(500).json({ error: "サーバーエラーが発生しました。" });
+  }
+});
+
+app.post("/api/v1/contact01", async (req, res) => {
   try {
     const { email, message } = req.body;
 

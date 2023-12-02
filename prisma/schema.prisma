@@ -36,3 +36,10 @@ model Calender {
   date   String
   detail   String
 }
+
+model Reservation02 {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String
+  phone    String
+}
